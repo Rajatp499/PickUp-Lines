@@ -1,0 +1,48 @@
+.navbar {
+    background-color: rgba(0, 0, 0, 0.664);
+    letter-spacing: 1px;
+    color: whitesmoke;
+    
+  }
+  .navbar > .navbar-contents {
+    text-decoration: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 7.2vh;
+  }
+  .navbar > .navbar-contents > .navbar-contents-centre {
+    width: 50vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  /*  */
+  input[type="search"] {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    height: 5vh;
+    border-radius: 4px;
+    outline: none;
+    color: rgba(255, 255, 255, 0.712);
+    font-size: 14px;
+    font-style: italic;
+    /* background-color: red; */
+  }
+  .search-icon {
+    background-color: rgba(0, 0, 0, 0);
+    /* height: 5vh; */
+    border: none;
+    color: white;
+    font-size: larger;
+  }
+  .search > button {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    cursor: pointer;
+    /* background-color: orange; */
+    height: 5vh;
+  
+    margin-left: 4px;
+  }

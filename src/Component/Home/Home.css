@@ -1,0 +1,59 @@
+
+* {
+/* font-family: "DM Sans", sans-serif; */
+
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+.Home {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  
+
+}
+
+.body-section {
+  background-color: rgba(245, 222, 179, 0.178);
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.card {
+  height: 18vh;
+  width: 38vw;
+  /* background-color: blue; */
+  margin: 20px;
+  border-radius: 20px;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.card:hover {
+  /* height: 20vh; */
+  /* width:40vw; */
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.card > .categories {
+  font-size: 30px;
+  color: wheat;
+  /* background-color: black; */
+}
+.card > .categories-icon {
+  font-size: 90px;
+  /* background-color: black; */
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+  color: wheat;
+}
