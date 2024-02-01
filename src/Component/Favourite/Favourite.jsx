@@ -10,42 +10,35 @@ import { FaShare } from "react-icons/fa6";
 
 //data
 import data from "../Data";
-import { setAllSelectedItems } from "../../store/slices/Slices";
+// import { selectItems } from "../../store/slices/Slices";
+import { disselectItems } from "../../store/slices/Slices";
 
 const Favourite = () => {
-  // const [favourites, setFavourites] = useState(useSelector((state) => {
-  //   return state.selectedItems;
-  // }));
-
-  const favourites = useSelector((state) => state.selectedItems);
-  // console.log(favourites);
-
-  const [uniqueIds, setUniqueIds] = useState(favourites.filter((id, index, array) => array.indexOf(id) === index));
-  // Use filter and indexOf to select IDs that occur only once
+  
+  const favourites = useSelector((state) => state.selectedItems)
   const dispatch = useDispatch();
-  
-  //dislike function
-  const dislike =(id) =>{
-  
-    const newArray = uniqueIds.filter((i) => i !== id);
-    setUniqueIds(newArray)
-  }
-  console.log(uniqueIds);
-  
-  useEffect(()=>{
-    dispatch(setAllSelectedItems(uniqueIds))
+  // console.log(favourites)
+  // const [uniqueIds, setUniqueIds] = useState(favourites.filter((item, index, array) => array.indexOf(item) === index));
+  // console.log(uniqueIds);
 
-  },[uniqueIds])
+  //dislie function
+  const dislike =(item) =>{
+    // console.log(id);
+    // setUniqueIds(uniqueIds.filter(item => item !== id));
+
+    dispatch(disselectItems(item))
+  }
+  // console.log("unique ids =  ", uniqueIds)
 
 
   return (
     <div>
-      {data.map((item) =>
-        uniqueIds.includes(item.id) ? (
+      {favourites.filter((item, index, array) => array.indexOf(item) === index).map((item) =>
+        // favourites.includes(item.id) ? (
           <div className="quote-card" key={item.id}>
             {item.quote}
             <div className="quote-card-feature">
-              <button className="quote-card-button" onClick={() => dislike(item.id)}>
+              <button className="quote-card-button" onClick={() => dislike(item)}>
                 <GoHeartFill className="quote-card-icon" />
               </button>
               <button
@@ -57,7 +50,7 @@ const Favourite = () => {
                 </button>
             </div>
           </div>
-        ) : null
+        // ) : null
       )}
     </div>
   );

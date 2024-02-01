@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import "./Quote.css";
 import { useDispatch,useSelector } from "react-redux";
-import { setAllSelectedItems } from "../../store/slices/Slices";
+import { selectItems, disselectItems } from "../../store/slices/Slices";
 
 //Quote
 import data from "../Data";
@@ -18,14 +18,17 @@ import { useTranslation } from "react-i18next";
 import i18n from "../../Translations/i18n";
 
 const Quote = () => {
-  const [selectedItems, setSelectedItems] = useState([]);
+
+  const[ favourites, setFavourites ]= useState(useSelector((state) => state.selectedItems))
+  console.log(favourites)
+  // const [selectedItems, setSelectedItems] = useState([...favourites ]);
+  
   const [languageItem, setLanguageItem] = useState([]);
 
   const dispatch = useDispatch();
 
   //Translation
   const { t } = useTranslation();
-
   const changeLanguages = (id) => {
     const isSelected = languageItem.includes(id);
 
@@ -39,30 +42,28 @@ const Quote = () => {
     i18n.changeLanguage("np");
   };
 
-  // const [favourites, setFavourites] = useState(useSelector((state) =>  state.selectedItems));
-  // const favourites = useSelector((state) => state.selectedItems);
+
 
   //Like function
-  const like = (id) => {
+  const like = (item) => {
     
-    //Add id if not in seleceItems and removes id if already present
-    setSelectedItems((prevSelectedItems) =>{
-      const isSelected = prevSelectedItems.includes(id);
-      
-      return isSelected
-      ? prevSelectedItems.filter((i) => i !== id)
-      : [...prevSelectedItems, id]
-      
-      
-    });
-    dispatch(setAllSelectedItems(selectedItems))
-  };
-  console.log(selectedItems);
 
-  // useEffect(() => {
-  //   dispatch(setAllSelectedItems(selectedItems))
-  //   // console.log(selectedItems);
-  // }, [ selectedItems])
+    setFavourites((prevfavourites) =>{
+      const isSelected = prevfavourites.includes(item);
+
+      if (isSelected) {
+        // If item is already in favourites, remove it
+        dispatch(disselectItems(item))
+    return prevfavourites.filter((i) => i !== item);
+  } else {
+    // If item is not in favourites, add it and dispatch the action
+    dispatch(selectItems(item));
+    return [...prevfavourites, item];
+  }
+    });
+  }
+
+
 
 
 
@@ -84,10 +85,10 @@ const Quote = () => {
               <div className="quote-card-feature">
                 <button
                   className="quote-card-button"
-                  onClick={() => like(q.id)}
+                  onClick={() => like(q)}
                 >
                   {/* To Change the like icon based on wheteher id is present in selectedItems or not */}
-                  {selectedItems.includes(q.id) ? (
+                  {favourites.includes(q) ? (
                     <GoHeartFill className="quote-card-icon" />
                   ) : (
                     <GoHeart className="quote-card-icon" />
