@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/PickUp-Lines/static/css/main.cb181f79.css",
+    "main.js": "/PickUp-Lines/static/js/main.a7bc2989.js",
+    "index.html": "/PickUp-Lines/index.html",
+    "main.cb181f79.css.map": "/PickUp-Lines/static/css/main.cb181f79.css.map",
+    "main.a7bc2989.js.map": "/PickUp-Lines/static/js/main.a7bc2989.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cb181f79.css",
+    "static/js/main.a7bc2989.js"
+  ]
+}
