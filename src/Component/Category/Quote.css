@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,200&family=Lato&display=swap');
 
+.copied-container{
+    display: none;
+    position: absolute;
+    background-color: whitesmoke;
+    padding: 16px;
+    border-radius: 10px;
+
+}
+
 .category{
     margin-top: 2vh;
 
